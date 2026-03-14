@@ -1,0 +1,46 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "User account information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "BidAnalysis": {
+      "title": "Bid Analysis",
+      "description": "Analysis result of a bidding document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "fileName": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "generalInfo": { "type": "object" },
+        "deadlines": { "type": "object" },
+        "paymentConditions": { "type": "object" },
+        "location": { "type": "object" },
+        "risks": { "type": "array" },
+        "checklist": { "type": "array" },
+        "executiveSummary": { "type": "array" },
+        "difficultyScore": { "type": "object" }
+      },
+      "required": ["userId", "fileName", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents"
+    },
+    "/analyses/{analysisId}": {
+      "schema": "BidAnalysis",
+      "description": "Bidding analysis results"
+    }
+  }
+}
